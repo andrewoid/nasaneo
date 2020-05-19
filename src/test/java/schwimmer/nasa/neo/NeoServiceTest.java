@@ -16,11 +16,7 @@ public class NeoServiceTest {
     @Test
     public void getAsteroids() throws IOException {
         // given
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.nasa.gov/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        NeoService service = retrofit.create(NeoService.class);
+        NeoService service = new NeoServiceFactory().getInstance();
 
         // when
         Response<NeoFeed> response = service.getAsteroids(
