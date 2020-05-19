@@ -14,6 +14,11 @@ public class NeoController implements Callback<NeoFeed> {
     private NeoService service;
     private NearEarthObjectView view;
 
+    /**
+     * Passes in it's dependencies because of Dependency Injection
+     * @param service
+     * @param view
+     */
     public NeoController(NeoService service, NearEarthObjectView view) {
         this.service = service;
         this.view = view;
