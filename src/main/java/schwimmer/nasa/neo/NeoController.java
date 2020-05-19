@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class NeoController implements Callback<NeoFeed> {
      * @param service
      * @param view
      */
+    @Inject
     public NeoController(NeoService service, NearEarthObjectView view) {
         this.service = service;
         this.view = view;
@@ -38,7 +40,7 @@ public class NeoController implements Callback<NeoFeed> {
 
     @Override
     public void onFailure(Call<NeoFeed> call, Throwable t) {
-
+        t.printStackTrace();
     }
 
 }

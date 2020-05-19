@@ -1,5 +1,8 @@
 package schwimmer.nasa.neo;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -8,6 +11,7 @@ import java.awt.*;
 
 public class NeoFrame extends JFrame {
 
+    @Inject
     public NeoFrame(NearEarthObjectView view, NeoController controller) {
         setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -19,12 +23,11 @@ public class NeoFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        NearEarthObjectView view = new NearEarthObjectView();
-        NeoService service = new NeoServiceFactory().getInstance();
+        Injector injector = Guice.createInjector(new NeoFrameModule());
 
-        NeoController controller = new NeoController(service, view);
+        NeoFrame frame = injector.getInstance(NeoFrame.class);
 
-        new NeoFrame(view, controller).setVisible(true);
+        frame.setVisible(true);
     }
 
 }
