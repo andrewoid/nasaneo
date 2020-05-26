@@ -39,10 +39,10 @@ public class NeoControllerTest {
         Call<NeoFeed> call = mock(Call.class);
         Response<NeoFeed> response = mock(Response.class);
 
-        NeoFeed.NearEarthObject neo = new NeoFeed.NearEarthObject();
+        NeoFeed.NearEarthObject neo = mock(NeoFeed.NearEarthObject.class);
         NeoFeed feed = mock(NeoFeed.class);
-        doReturn(neo).when(feed).getFirstObject("2020-05-05");
 
+        doReturn(neo).when(feed).getFirstObject("2020-05-05");
         doReturn(feed).when(response).body();
 
         // when
